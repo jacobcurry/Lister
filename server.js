@@ -20,6 +20,15 @@ app.listen(PORT, () => {
   console.log("listening");
 });
 
-mongoose.connect(process.env.MONGOURI, () => {
-  console.log("connected to mongo");
-});
+mongoose.connect(
+  process.env.MONGOURI,
+  {
+    //must add in order to not get any error masseges:
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  },
+  () => {
+    console.log("connected to mongo");
+  }
+);
