@@ -26,8 +26,8 @@
       style="width: 100vw; height: 100vh"
     >
       <%- include('./partials/header.ejs') %>
-      <form action="/movie">
-        <div class="mb-3 container d-flex align-items-stretch">
+      <form action="/show">
+        <div class="mb-3 d-flex align-items-stretch">
           <input
             type="text"
             class="form-control"
@@ -35,22 +35,11 @@
             aria-describedby="emailHelp"
             placeholder="Search for a movie..."
             name="movie"
+            required
           />
           <input type="submit" class="btn btn-primary ms-2" value="Search" />
         </div>
       </form>
-
-      <%if(data === ''){%><%} else {%>
-      <div class="card bg-dark" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title"><%=data.Title%></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%=data.Genre%></h6>
-          <p class="card-text"><%=data.Plot%></p>
-          <a href="/movie/show" class="card-link">Read More</a>
-          <a href="#" class="card-link">Add to list</a>
-        </div>
-      </div>
-      <%}%>
     </div>
   </body>
 </html>

@@ -17,22 +17,40 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/css/style.css" />
     <title>Movie List Home</title>
   </head>
   <body>
     <div
-      class="d-flex flex-column justify-content-center align-items-center"
+      class="d-flex flex-column justify-content-center align-items-center show-movie-div"
       style="width: 100vw; height: 100vh"
     >
-      <%- include('./partials/header.ejs') %> <%if(data === ''){%><%} else {%>
-      <div class="card bg-dark" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title"><%=data.Title%></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%=data.Genre%></h6>
+      <%- include('./partials/header.ejs') %> <%if(data.Error){%> <%} else {%>
+      <div class="card" style="width: 75%">
+        <div class="card-body d-flex flex-column ps-4 pe-4">
+          <h1 class="card-title mb-3"><%=data.Title%></h1>
+          <h6>IMDb Rating: <%=data.imdbRating%>/10</h6>
+          <h6 class="mb-3">Rotten Tomatoes: <%=data.Ratings[1].Value%></h6>
+          <h6 class="card-subtitle mb-3 text-muted">
+            <%=data.Year%> &nbsp|&nbsp <%=data.Rated%> &nbsp|&nbsp
+            <%=data.Runtime%>
+          </h6>
           <p class="card-text"><%=data.Plot%></p>
-          <a href="/movie" class="card-link">Back</a>
-          <a href="#" class="card-link">Add to list</a>
+          <h6 class="card-subtitle mb-3 text-muted"><%=data.Genre%></h6>
+          <img class="mb-3" style="width: 50%" src="<%=data.Poster%>" />
+          <h6 class="card-subtitle mb-3">Director: <%=data.Director%></h6>
+          <h6 class="card-subtitle mb-3">Writer: <%=data.Writer%></h6>
+          <h6 class="card-subtitle mb-3">Actors: <%=data.Actors%></h6>
+          <div>
+            <a href="/" class="card-link">Back</a>
+            <a href="/movielist" class="card-link add-movie">Add to list</a>
+          </div>
         </div>
       </div>
       <%}%>

@@ -1,6 +1,8 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const router = express.Router();
 const axios = require("axios");
+const Movie = require("../models/movie.js");
 let newMovie = "";
 
 const axiosInstance = axios.create({
@@ -8,24 +10,41 @@ const axiosInstance = axios.create({
   header: { "Access-Control-Allow_Origin": "*" },
 });
 
+//home
 router.get("/", (req, res) => {
   res.render("moviehome.ejs", {
     data: "",
   });
 });
-router.get("/movie", async (req, res, next) => {
+
+//show
+router.get("/show", async (req, res, next) => {
   const movie = req.query.movie;
   const response = await axiosInstance.get(movie);
   newMovie = response.data;
-  res.render("moviehome.ejs", {
-    data: newMovie,
-  });
+  if (newMovie.Error) {
+    res.render("moviehome.ejs", { error: newMovie.Error });
+  } else {
+    res.render("movieshow.ejs", {
+      data: newMovie,
+    });
+  }
 });
 
-router.get("/movie/show", (req, res) => {
-  res.render("movieshow.ejs", {
-    data: newMovie,
+//movielist
+router.get("/movielist", (req, res) => {
+  Movie.create(newMovie, (err, data) => {
+    console.log(data);
   });
+  res.render("movielist.ejs");
 });
+// axios
+//   .post("/movielist")
+//   .then((response) => {
+//     console.log(response);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 module.exports = router;

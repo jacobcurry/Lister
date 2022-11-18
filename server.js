@@ -1,8 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const bodyParser = require("body-parser");
+const Movie = require("./models/movie.js");
 
 const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //staic folders
 app.use(express.static("public"));

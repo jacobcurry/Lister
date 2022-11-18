@@ -21,7 +21,7 @@
     <title>Movie List Home</title>
   </head>
   <body>
-    <%- include('../partials/header.ejs') %>
+    <%- include('./partials/header.ejs') %>
     <div
       class="d-flex align-items-center justify-content-center"
       style="width: 100vw; height: 100vh"
@@ -29,10 +29,10 @@
       <form>
         <h1>Log In</h1>
         <div class="mb-3">
-          <label for="emailInput" class="form-label">Username</label>
+          <label for="emailInput" class="form-label">Email</label>
           <input
-            type="text"
-            name="username"
+            type="email"
+            name="email"
             class="form-control"
             id="emailInput"
             aria-describedby="emailHelp"
@@ -53,7 +53,7 @@
         <div id="createAccount" class="form-text text-center fs-5">
           Don't Have an account?
         </div>
-        <a href="/users/new"
+        <a href="/signup"
           ><button class="btn btn-primary mt-3">Sign Up</button></a
         >
       </div>
