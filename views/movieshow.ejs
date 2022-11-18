@@ -17,7 +17,7 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Movie List Home</title>
   </head>
   <body>
@@ -25,28 +25,13 @@
       class="d-flex flex-column justify-content-center align-items-center"
       style="width: 100vw; height: 100vh"
     >
-      <%- include('./partials/header.ejs') %>
-      <form action="/movie">
-        <div class="mb-3 container d-flex align-items-stretch">
-          <input
-            type="text"
-            class="form-control"
-            id="searchBar"
-            aria-describedby="emailHelp"
-            placeholder="Search for a movie..."
-            name="movie"
-          />
-          <input type="submit" class="btn btn-primary ms-2" value="Search" />
-        </div>
-      </form>
-
-      <%if(data === ''){%><%} else {%>
+      <%- include('./partials/header.ejs') %> <%if(data === ''){%><%} else {%>
       <div class="card bg-dark" style="width: 18rem">
         <div class="card-body">
           <h5 class="card-title"><%=data.Title%></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%=data.Genre%></h6>
           <p class="card-text"><%=data.Plot%></p>
-          <a href="/movie/show" class="card-link">Read More</a>
+          <a href="/movie" class="card-link">Back</a>
           <a href="#" class="card-link">Add to list</a>
         </div>
       </div>

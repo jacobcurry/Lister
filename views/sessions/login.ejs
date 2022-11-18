@@ -17,40 +17,46 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Movie List Home</title>
   </head>
   <body>
+    <%- include('../partials/header.ejs') %>
     <div
-      class="d-flex flex-column justify-content-center align-items-center"
+      class="d-flex align-items-center justify-content-center"
       style="width: 100vw; height: 100vh"
     >
-      <%- include('./partials/header.ejs') %>
-      <form action="/movie">
-        <div class="mb-3 container d-flex align-items-stretch">
+      <form>
+        <h1>Log In</h1>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Username</label>
           <input
             type="text"
+            name="username"
             class="form-control"
-            id="searchBar"
+            id="emailInput"
             aria-describedby="emailHelp"
-            placeholder="Search for a movie..."
-            name="movie"
           />
-          <input type="submit" class="btn btn-primary ms-2" value="Search" />
         </div>
+        <div class="mb-3">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="passwordInput"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
       </form>
-
-      <%if(data === ''){%><%} else {%>
-      <div class="card bg-dark" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title"><%=data.Title%></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%=data.Genre%></h6>
-          <p class="card-text"><%=data.Plot%></p>
-          <a href="/movie/show" class="card-link">Read More</a>
-          <a href="#" class="card-link">Add to list</a>
+      <div class="d-flex flex-column ms-5">
+        <div id="createAccount" class="form-text text-center fs-5">
+          Don't Have an account?
         </div>
+        <a href="/users/new"
+          ><button class="btn btn-primary mt-3">Sign Up</button></a
+        >
       </div>
-      <%}%>
     </div>
   </body>
 </html>
