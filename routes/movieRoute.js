@@ -10,7 +10,6 @@ const axiosInstance = axios.create({
 
 router.get("/", (req, res) => {
   res.render("moviehome.ejs", {
-    currentUser: req.session.currentUser,
     data: "",
   });
 });
@@ -19,14 +18,12 @@ router.get("/movie", async (req, res, next) => {
   const response = await axiosInstance.get(movie);
   newMovie = response.data;
   res.render("moviehome.ejs", {
-    currentUser: req.session.currentUser,
     data: newMovie,
   });
 });
 
 router.get("/movie/show", (req, res) => {
   res.render("movieshow.ejs", {
-    currentUser: req.session.currentUser,
     data: newMovie,
   });
 });
