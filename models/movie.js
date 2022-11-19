@@ -5,7 +5,7 @@ const movieSchema = new mongoose.Schema(
     Title: { type: String, required: true },
     Year: { type: String, required: true },
     Rated: { type: String, required: true },
-    Release: { type: String, required: true },
+    Released: { type: String, required: true },
     Runtime: { type: String, required: true },
     Genre: { type: String, required: true },
     Director: { type: String, required: true },
@@ -18,4 +18,4 @@ const movieSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", movieSchema);
+module.exports = mongoose.model("Movie", movieSchema);

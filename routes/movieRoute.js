@@ -22,6 +22,7 @@ router.get("/show", async (req, res, next) => {
   const movie = req.query.movie;
   const response = await axiosInstance.get(movie);
   newMovie = response.data;
+  //console.log(newMovie);
   if (newMovie.Error) {
     res.render("moviehome.ejs", { error: newMovie.Error });
   } else {
@@ -34,7 +35,7 @@ router.get("/show", async (req, res, next) => {
 //movielist
 router.get("/movielist", (req, res) => {
   Movie.create(newMovie, (err, data) => {
-    console.log(data);
+    console.log(newMovie);
   });
   res.render("movielist.ejs");
 });
