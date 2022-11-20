@@ -22,5 +22,35 @@
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
+    <table class="table mt-5 m-3">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Year</th>
+          <th scope="col">Genre</th>
+          <th scope="col">See More</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(let i = 0; i < data.length; i++) {%>
+        <tr>
+          <th scope="row"><%=data[i].Title%></th>
+          <td><%=data[i].Year%></td>
+          <td><%=data[i].Genre%></td>
+          <td>
+            <form action="/show" action="post">
+              <input
+                class="hidden"
+                name="movie"
+                type="text"
+                value="<%=data[i].Title%>"
+              />
+              <input class="btn btn-primary" type="submit" value="See More" />
+            </form>
+          </td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
   </body>
 </html>

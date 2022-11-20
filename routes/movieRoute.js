@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const axios = require("axios");
 const Movie = require("../models/movie.js");
+const movie = require("../models/movie.js");
 let newMovie = "";
 
 const axiosInstance = axios.create({
@@ -33,11 +34,17 @@ router.get("/show", async (req, res, next) => {
 });
 
 //movielist
-router.get("/movielist", (req, res) => {
+router.get("/addmovie", (req, res) => {
   Movie.create(newMovie, (err, data) => {
     console.log(newMovie);
   });
-  res.render("movielist.ejs");
+  res.redirect("/movielist");
+});
+
+router.get("/movielist", (req, res) => {
+  Movie.find({}, (err, foundData) => {
+    res.render("movielist.ejs", { data: foundData });
+  });
 });
 // axios
 //   .post("/movielist")

@@ -7,3 +7,7 @@ html {
   margin: 10px auto;
   max-height: 80%;
 }
+
+.hidden {
+  display: none;
+}
