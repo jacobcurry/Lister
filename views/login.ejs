@@ -23,10 +23,10 @@
   <body>
     <%- include('./partials/header.ejs') %>
     <div
-      class="d-flex align-items-center justify-content-center"
+      class="container d-flex align-items-center justify-content-center"
       style="width: 100vw; height: 100vh"
     >
-      <form action="/login" method="post">
+      <form class="ms-3" action="/login" method="post">
         <h1>Log In</h1>
         <div class="mb-3">
           <label for="emailInput" class="form-label">Email</label>
@@ -49,7 +49,7 @@
         </div>
         <button type="submit" class="btn btn-primary mt-2">Submit</button>
       </form>
-      <div class="d-flex flex-column ms-5">
+      <div class="d-flex flex-column ms-5 align-items-center me-3">
         <div id="createAccount" class="form-text text-center fs-5">
           Don't Have an account?
         </div>
