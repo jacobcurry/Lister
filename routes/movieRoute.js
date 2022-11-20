@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const axios = require("axios");
 const Movie = require("../models/movie.js");
-const movie = require("../models/movie.js");
 let newMovie = "";
 
 const axiosInstance = axios.create({
@@ -11,10 +10,28 @@ const axiosInstance = axios.create({
   header: { "Access-Control-Allow_Origin": "*" },
 });
 
+//checking to see if user is logged in
+const isAuth = (req, res, next) => {
+  if (!req.session.isAuth) {
+    res.redirect("/");
+  }
+  next();
+};
+
 //home
 router.get("/", (req, res) => {
   res.render("moviehome.ejs", {
     data: "",
+    name: req.session.name,
+    auth: req.session.isAuth,
+    email: req.session.email,
+  });
+});
+
+//delete
+router.get("/delete/:id", (req, res) => {
+  Movie.findByIdAndRemove(req.params.id, (err, data) => {
+    res.redirect("/movielist");
   });
 });
 
@@ -23,36 +40,30 @@ router.get("/show", async (req, res, next) => {
   const movie = req.query.movie;
   const response = await axiosInstance.get(movie);
   newMovie = response.data;
-  //console.log(newMovie);
-  if (newMovie.Error) {
-    res.render("moviehome.ejs", { error: newMovie.Error });
-  } else {
-    res.render("movieshow.ejs", {
-      data: newMovie,
-    });
-  }
+  res.render("movieshow.ejs", {
+    data: newMovie,
+    name: req.session.name,
+    auth: req.session.isAuth,
+    email: req.session.email,
+  });
 });
 
 //movielist
 router.get("/addmovie", (req, res) => {
-  Movie.create(newMovie, (err, data) => {
-    console.log(newMovie);
-  });
+  newMovie.email = req.session.email;
+  Movie.create(newMovie, (err, data) => {});
   res.redirect("/movielist");
 });
 
-router.get("/movielist", (req, res) => {
-  Movie.find({}, (err, foundData) => {
-    res.render("movielist.ejs", { data: foundData });
+router.get("/movielist", isAuth, (req, res) => {
+  Movie.find({ email: req.session.email }, (err, foundData) => {
+    res.render("movielist.ejs", {
+      data: foundData,
+      name: req.session.name,
+      auth: req.session.isAuth,
+      email: req.session.email,
+    });
   });
 });
-// axios
-//   .post("/movielist")
-//   .then((response) => {
-//     console.log(response);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
 
 module.exports = router;

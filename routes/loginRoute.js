@@ -5,7 +5,10 @@ const bcrypt = require("bcrypt");
 const User = require("../models/users.js");
 
 router.get("/", (req, res) => {
-  res.render("login.ejs");
+  if (!req.session.isAuth) {
+    return res.render("login.ejs");
+  }
+  res.redirect("/");
 });
 
 router.post("/", async (req, res) => {
@@ -23,6 +26,8 @@ router.post("/", async (req, res) => {
     return res.redirect("/login");
   }
   req.session.isAuth = true;
+  req.session.email = email;
+  req.session.name = user.name;
   res.redirect("/");
 });
 

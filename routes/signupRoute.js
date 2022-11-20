@@ -5,7 +5,10 @@ const bcrypt = require("bcrypt");
 const User = require("../models/users.js");
 
 router.get("/", (req, res) => {
-  res.render("signup.ejs");
+  if (!req.session.isAuth) {
+    return res.render("signup.ejs");
+  }
+  res.redirect("/");
 });
 
 router.post("/", async (req, res) => {

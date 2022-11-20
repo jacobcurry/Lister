@@ -4,11 +4,13 @@ const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 require("dotenv").config();
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 
 const store = new MongoDBSession({
   uri: process.env.MONGOURI,

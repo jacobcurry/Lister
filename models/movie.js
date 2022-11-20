@@ -14,6 +14,7 @@ const movieSchema = new mongoose.Schema(
     Poster: { type: String, required: true },
     imdbRating: { type: String, required: true },
     BoxOffice: { type: String, required: true },
+    email: { type: String, required: true },
   },
   { timestamps: true }
 );

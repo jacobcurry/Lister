@@ -17,11 +17,18 @@
       >
       <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end mt-2">
         <li>
-          <a class="dropdown-item" href="/">Home</a>
+          <h5 class="dropdown-item">Welcome, <%=name%></h5>
         </li>
         <li>
-          <a class="dropdown-item" href="/login">Log In/Sign Up</a>
+          <a class="dropdown-item" href="/">Home</a>
         </li>
+        <li><a class="dropdown-item" href="/movielist">Your Movie List</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <form action="/logout" method="post">
+          <li>
+            <input class="dropdown-item" type="submit" value="Sign Out" />
+          </li>
+        </form>
       </ul>
     </li>
   </div>
