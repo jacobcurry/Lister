@@ -56,8 +56,20 @@ router.get("/show", async (req, res, next) => {
 //movielist
 router.get("/addmovie", (req, res) => {
   newMovie.email = req.session.email;
-  Movie.create(newMovie, (err, data) => {});
-  res.redirect("/movie/movielist");
+  Movie.find({ email: req.session.email }, (err, foundData) => {
+    let duplicate = false;
+    for (let i = 0; i < foundData.length; i++) {
+      if (foundData[i].Title === newMovie.Title) {
+        duplicate = true;
+      }
+    }
+    if (duplicate) {
+      return res.redirect("/movie/movielist");
+    } else {
+      Movie.create(newMovie, (err, data) => {});
+      return res.redirect("/movie/movielist");
+    }
+  });
 });
 
 router.get("/movielist", isAuth, (req, res) => {

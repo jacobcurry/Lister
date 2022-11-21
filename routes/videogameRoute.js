@@ -59,8 +59,19 @@ router.get("/show", async (req, res, next) => {
 //movielist
 router.get("/addvideogame", (req, res) => {
   newVideogameList.email = req.session.email;
-  Videogame.create(newVideogameList, (err, data) => {
-    res.redirect("/videogame/videogamelist");
+  Videogame.find({ email: req.session.email }, (err, foundData) => {
+    let duplicate = false;
+    for (let i = 0; i < foundData.length; i++) {
+      if (foundData[i].results[0].name === newVideogameList.results[0].name) {
+        duplicate = true;
+      }
+    }
+    if (duplicate) {
+      return res.redirect("/videogame/videogamelist");
+    } else {
+      Videogame.create(newVideogameList, (err, data) => {});
+      return res.redirect("/videogame/videogamelist");
+    }
   });
 });
 

@@ -59,8 +59,22 @@ router.get("/show", async (req, res, next) => {
 //movielist
 router.get("/addbook", (req, res) => {
   newBook.email = req.session.email;
-  Book.create(newBook, (err, data) => {
-    res.redirect("/book/booklist");
+  Book.find({ email: req.session.email }, (err, foundData) => {
+    let duplicate = false;
+    for (let i = 0; i < foundData.length; i++) {
+      if (
+        foundData[i].items[0].volumeInfo.title ===
+        newBook.items[0].volumeInfo.title
+      ) {
+        duplicate = true;
+      }
+    }
+    if (duplicate) {
+      return res.redirect("/book/booklist");
+    } else {
+      Book.create(newBook, (err, data) => {});
+      return res.redirect("/book/booklist");
+    }
   });
 });
 
