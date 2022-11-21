@@ -1,35 +1,66 @@
-<nav class="navbar fixed-top bg-dark">
-  <div class="container-fluid d-flex justify-content-between align-items-end">
-    <a class="text-decoration-none" href="/"
-      ><h1 class="m-0 text-light">
-        <i class="fa-solid fa-masks-theater"></i>Movie List
-      </h1></a
+<nav
+  class="navbar bg-dark fixed-top d-flex justify-content-between align-items-end"
+>
+  <div>
+    <%if(path === '/movie'){%>
+    <a class="text-decoration-none" href="/movie"
+      ><h1 class="m-0 ms-3 text-light">Movie Lister</h1></a
     >
+    <%}else if(path === '/videogame'){%>
+    <a class="text-decoration-none" href="/videogame"
+      ><h1 class="m-0 ms-3 text-light">Video Game Lister</h1></a
+    >
+    <%}else if(path === '/book'){%>
+    <a class="text-decoration-none" href="/book"
+      ><h1 class="m-0 ms-3 text-light">Book Lister</h1></a
+    >
+    <%}else{%>
+    <a class="text-decoration-none" href="/"
+      ><h1 class="m-0 ms-3 text-light">Lister</h1></a
+    >
+    <%}%>
+  </div>
 
-    <li class="nav-item dropdown list-group-item">
-      <a
-        class="nav-link dropdown-toggle text-light"
+  <div>
+    <div class="dropdown">
+      <button
+        class="btn btn-dark dropdown-toggle align-bottom"
+        type="button"
         data-bs-toggle="dropdown"
-        href="#"
-        role="button"
         aria-expanded="false"
-        >Profile</a
       >
-      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end mt-2">
+        Profile
+      </button>
+      <ul
+        class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+        aria-labelledby="navbarDropdownMenuLinkRight"
+      >
+        <li><h5 class="text-center ms-1 me-1">Welcome, <%=name%></h5></li>
+        <li><a class="dropdown-item" href="/">Home</a></li>
         <li>
-          <h5 class="dropdown-item">Welcome, <%=name%></h5>
+          <a class="dropdown-item" href="#"> Your Lists &#171;</a>
+          <ul
+            class="dropdown-menu dropdown-menu-dark dropdown-submenu dropdown-submenu-left"
+          >
+            <li>
+              <a class="dropdown-item" href="/movie/movielist">Movie List</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/videogame/videogamelist"
+                >Videogame List</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/book/booklist">Book List</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a class="dropdown-item" href="/">Home</a>
-        </li>
-        <li><a class="dropdown-item" href="/movielist">Your Movie List</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <form action="/logout" method="post">
-          <li>
+          <form action="/logout" method="post">
             <input class="dropdown-item" type="submit" value="Sign Out" />
-          </li>
-        </form>
+          </form>
+        </li>
       </ul>
-    </li>
+    </div>
   </div>
 </nav>

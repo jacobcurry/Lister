@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/style.css" />
-    <title>Movie List Home</title>
+    <title>Book List Home</title>
   </head>
   <body>
     <div
@@ -27,15 +27,15 @@
     >
       <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else
       {%> <%- include('./partials/header.ejs') %> <%}%>
-      <form action="/movie/show">
+      <form action="/book/show">
         <div class="d-flex align-items-stretch">
           <input
             type="text"
+            name="book"
             class="form-control rounded-0 rounded-start"
             id="searchBar"
             aria-describedby="emailHelp"
-            placeholder="Search for a movie..."
-            name="movie"
+            placeholder="Search for a book..."
             required
           />
           <input

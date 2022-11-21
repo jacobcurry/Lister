@@ -30,8 +30,17 @@ app.use(
 app.use(express.static("public"));
 
 //movie router
+const homeRouter = require("./routes/homeRoute.js");
+app.use("/", homeRouter);
+//movie router
 const movieRouter = require("./routes/movieRoute.js");
-app.use("/", movieRouter);
+app.use("/movie", movieRouter);
+//movie router
+const videogameRouter = require("./routes/videogameRoute.js");
+app.use("/videogame", videogameRouter);
+//movie router
+const bookRouter = require("./routes/bookRoute.js");
+app.use("/book", bookRouter);
 //login router
 const loginRouter = require("./routes/loginRoute.js");
 app.use("/login", loginRouter);

@@ -25,13 +25,14 @@ router.get("/", (req, res) => {
     name: req.session.name,
     auth: req.session.isAuth,
     email: req.session.email,
+    path: req.baseUrl,
   });
 });
 
 //delete
-router.get("/delete/:id", (req, res) => {
+router.get("/movie/delete/:id", (req, res) => {
   Movie.findByIdAndRemove(req.params.id, (err, data) => {
-    res.redirect("/movielist");
+    res.redirect("/movie/movielist");
   });
 });
 
@@ -41,13 +42,14 @@ router.get("/show", async (req, res, next) => {
   const response = await axiosInstance.get(movie);
   newMovie = response.data;
   if (newMovie.Error) {
-    return res.redirect("/");
+    return res.redirect("/movie");
   }
   res.render("movieshow.ejs", {
     data: newMovie,
     name: req.session.name,
     auth: req.session.isAuth,
     email: req.session.email,
+    path: req.baseUrl,
   });
 });
 
@@ -55,7 +57,7 @@ router.get("/show", async (req, res, next) => {
 router.get("/addmovie", (req, res) => {
   newMovie.email = req.session.email;
   Movie.create(newMovie, (err, data) => {});
-  res.redirect("/movielist");
+  res.redirect("/movie/movielist");
 });
 
 router.get("/movielist", isAuth, (req, res) => {
@@ -65,6 +67,7 @@ router.get("/movielist", isAuth, (req, res) => {
       name: req.session.name,
       auth: req.session.isAuth,
       email: req.session.email,
+      path: req.baseUrl,
     });
   });
 });

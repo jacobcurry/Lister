@@ -6,7 +6,9 @@ const User = require("../models/users.js");
 
 router.get("/", (req, res) => {
   if (!req.session.isAuth) {
-    return res.render("login.ejs");
+    return res.render("login.ejs", {
+      path: req.baseUrl,
+    });
   }
   res.redirect("/");
 });

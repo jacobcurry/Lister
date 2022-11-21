@@ -28,8 +28,8 @@
         <thead class="">
           <tr>
             <th scope="col">Title</th>
-            <th scope="col">Year</th>
-            <th scope="col">Genre</th>
+            <th scope="col">Author</th>
+            <th scope="col">Categories</th>
             <th scope="col">See More</th>
             <th scope="col">Delete</th>
           </tr>
@@ -37,30 +37,30 @@
         <tbody class="table-group-divider">
           <%for(let i = 0; i < data.length; i++) {%>
           <tr>
-            <th scope="row"><%=data[i].Title%></th>
-            <td><%=data[i].Year%></td>
-            <td><%=data[i].Genre%></td>
+            <th scope="row"><%=data[i].items[0].volumeInfo.title%></th>
+            <td><%=data[i].items[0].volumeInfo.authors%></td>
+            <td><%=data[i].items[0].volumeInfo.categories%></td>
             <td>
-              <form action="/movie/show" action="post">
+              <form action="/book/show" action="post">
                 <input
                   class="hidden"
-                  name="movie"
+                  name="book"
                   type="text"
-                  value="<%=data[i].Title%>"
+                  value="<%=data[i].items[0].volumeInfo.title%>"
                 />
                 <input class="btn btn-primary" type="submit" value="See More" />
               </form>
             </td>
             <td>
               <form
-                action="movie/delete/<%=data[i].id%>?_method=DELETE"
+                action="book/delete/<%=data[i].id%>?_method=DELETE"
                 action="post"
               >
                 <input
                   class="hidden"
-                  name="movie"
+                  name="book"
                   type="text"
-                  value="<%=data[i].Title%>"
+                  value="<%=data[i].items[0].volumeInfo.title%>"
                 />
                 <input class="btn btn-danger" type="submit" value="Delete" />
               </form>
@@ -69,11 +69,11 @@
           <%}%>
         </tbody>
       </table>
-      <form action="/movie">
+      <form action="/book">
         <input
           class="btn btn-primary ms-5"
           type="submit"
-          value="Search For Another Movie"
+          value="Search For Another Book"
         />
       </form>
     </div>

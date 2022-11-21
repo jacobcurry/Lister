@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Movie List Home</title>
+    <title>Videogame List Home</title>
   </head>
   <body>
     <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else {%>
@@ -27,8 +27,8 @@
       <table class="table table-hover mt-5 text-center align-middle">
         <thead class="">
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Year</th>
+            <th scope="col">Name</th>
+            <th scope="col">Released</th>
             <th scope="col">Genre</th>
             <th scope="col">See More</th>
             <th scope="col">Delete</th>
@@ -37,30 +37,30 @@
         <tbody class="table-group-divider">
           <%for(let i = 0; i < data.length; i++) {%>
           <tr>
-            <th scope="row"><%=data[i].Title%></th>
-            <td><%=data[i].Year%></td>
-            <td><%=data[i].Genre%></td>
+            <th scope="row"><%=data[i].results[0].name%></th>
+            <td><%=data[i].results[0].released%></td>
+            <td><%=data[i].results[0].genres[0].name%></td>
             <td>
-              <form action="/movie/show" action="post">
+              <form action="/videogame/show" action="post">
                 <input
                   class="hidden"
-                  name="movie"
+                  name="videogame"
                   type="text"
-                  value="<%=data[i].Title%>"
+                  value="<%=data[i].results[0].name%>"
                 />
                 <input class="btn btn-primary" type="submit" value="See More" />
               </form>
             </td>
             <td>
               <form
-                action="movie/delete/<%=data[i].id%>?_method=DELETE"
+                action="videogame/delete/<%=data[i].id%>?_method=DELETE"
                 action="post"
               >
                 <input
                   class="hidden"
                   name="movie"
                   type="text"
-                  value="<%=data[i].Title%>"
+                  value="<%=data[i].name%>"
                 />
                 <input class="btn btn-danger" type="submit" value="Delete" />
               </form>
@@ -69,11 +69,11 @@
           <%}%>
         </tbody>
       </table>
-      <form action="/movie">
+      <form action="/videogame">
         <input
           class="btn btn-primary ms-5"
           type="submit"
-          value="Search For Another Movie"
+          value="Search For Another Game"
         />
       </form>
     </div>

@@ -1,10 +1,22 @@
 <nav class="navbar fixed-top bg-dark">
   <div class="container-fluid d-flex justify-content-between align-items-end">
-    <a class="text-decoration-none" href="/"
-      ><h1 class="m-0 text-light">
-        <i class="fa-solid fa-masks-theater"></i>Movie List
-      </h1></a
+    <%if(path === '/movie'){%>
+    <a class="text-decoration-none" href="/movie"
+      ><h1 class="m-0 text-light">Movie Lister</h1></a
     >
+    <%}else if(path === '/videogame'){%>
+    <a class="text-decoration-none" href="/videogame"
+      ><h1 class="m-0 text-light">Video Game Lister</h1></a
+    >
+    <%}else if(path === '/book'){%>
+    <a class="text-decoration-none" href="/book"
+      ><h1 class="m-0 text-light">Book Lister</h1></a
+    >
+    <%}else{%>
+    <a class="text-decoration-none" href="/"
+      ><h1 class="m-0 text-light">Lister</h1></a
+    >
+    <%}%>
 
     <li class="nav-item dropdown list-group-item">
       <a

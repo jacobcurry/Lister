@@ -27,24 +27,15 @@
     >
       <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else
       {%> <%- include('./partials/header.ejs') %> <%}%>
-      <form action="/movie/show">
-        <div class="d-flex align-items-stretch">
-          <input
-            type="text"
-            class="form-control rounded-0 rounded-start"
-            id="searchBar"
-            aria-describedby="emailHelp"
-            placeholder="Search for a movie..."
-            name="movie"
-            required
-          />
-          <input
-            type="submit"
-            class="btn btn-primary rounded-0 rounded-end"
-            value="Search"
-          />
-        </div>
-      </form>
+      <div class="list-group">
+        <a href="/movie" class="list-group-item list-group-item-action">
+          Movie
+        </a>
+        <a href="/videogame" class="list-group-item list-group-item-action"
+          >Video Games</a
+        >
+        <a href="/book" class="list-group-item list-group-item-action">Books</a>
+      </div>
     </div>
   </body>
 </html>
