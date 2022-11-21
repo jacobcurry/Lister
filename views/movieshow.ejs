@@ -28,10 +28,11 @@
       {%> <%- include('./partials/header.ejs') %> <%}%>
       <div class="card mt-5">
         <div class="card-body d-flex flex-column ps-4 pe-4">
-          <h1 class="card-title mb-3"><%=data.Title%></h1>
-          <h6>IMDb Rating: <%=data.imdbRating%>/10</h6>
-          <h6 class="mb-3">Rotten Tomatoes: <%=data.Ratings[1].Value%></h6>
-          <h6 class="card-subtitle mb-3 text-muted">
+          <div class="d-flex align-items-center justify-content-between">
+            <h1 class="card-title mb-3"><%=data.Title%></h1>
+            <h6>IMDb Rating: <%=data.imdbRating%>/10</h6>
+          </div>
+          <h6 class="card-subtitle mb-3text-muted">
             <%=data.Year%> &nbsp|&nbsp <%=data.Rated%> &nbsp|&nbsp
             <%=data.Runtime%>
           </h6>
@@ -41,10 +42,19 @@
           <h6 class="card-subtitle mb-3">Director: <%=data.Director%></h6>
           <h6 class="card-subtitle mb-3">Writer: <%=data.Writer%></h6>
           <h6 class="card-subtitle mb-3">Actors: <%=data.Actors%></h6>
-          <div>
-            <a href="/" class="card-link">Back</a>
+          <div class="d-flex">
+            <form>
+              <input
+                class="btn btn-primary me-2"
+                type="button"
+                value="Back"
+                onclick="history.back()"
+              />
+            </form>
             <%if(auth){%>
-            <a href="/addmovie" class="card-link add-movie">Add to list</a>
+            <a href="/addmovie" class="btn btn-success add-movie"
+              >Add to list</a
+            >
             <%}%>
           </div>
         </div>

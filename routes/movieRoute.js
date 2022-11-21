@@ -40,6 +40,9 @@ router.get("/show", async (req, res, next) => {
   const movie = req.query.movie;
   const response = await axiosInstance.get(movie);
   newMovie = response.data;
+  if (newMovie.Error) {
+    return res.redirect("/");
+  }
   res.render("movieshow.ejs", {
     data: newMovie,
     name: req.session.name,
