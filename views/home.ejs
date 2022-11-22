@@ -21,21 +21,106 @@
     <title>Movie List Home</title>
   </head>
   <body>
-    <div
-      class="d-flex flex-column justify-content-center align-items-center"
-      style="width: 100vw; height: 100vh"
-    >
+    <div class="container-fluid">
       <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else
       {%> <%- include('./partials/header.ejs') %> <%}%>
-      <div class="list-group">
-        <a href="/movie" class="list-group-item list-group-item-action">
-          Movie
-        </a>
-        <a href="/videogame" class="list-group-item list-group-item-action"
-          >Video Games</a
-        >
-        <a href="/book" class="list-group-item list-group-item-action">Books</a>
+      <div class="d-flex flex-column min-vh-100 justify-content-center">
+        <div class="container">
+          <h2 class="mb-1">
+            Make a list of all your favorite movies, videogames, and books.
+          </h2>
+          <h5 class="text-muted mb-3">All in the same place!</h5>
+          <%if(name){%>
+          <input
+            id="scroll"
+            class="btn btn-primary mb-3"
+            type="button"
+            value="Lets Get Started"
+            onclick="document.getElementById('middle-div').scrollIntoView({behavior:'smooth'});"
+          />
+          <%}else{%>
+          <div class="d-flex mt-5" style="width: 100%">
+            <div class="" style="width: 40%">
+              <h3 class="mb-3">
+                Let's get you logged in so you can start adding to your lists.
+              </h3>
+              <a href="/login"
+                ><button class="btn btn-primary">Log In</button></a
+              >
+              <h5 class="text-muted mt-3 mb-3">Don't Have an account yet?</h5>
+              <a href="/signup"
+                ><button class="btn btn-primary">Sign Up</button></a
+              >
+            </div>
+          </div>
+          <%}%>
+        </div>
+      </div>
+      <%if(name){%>
+      <div class="container min-vh-100" id="middle-div">
+        <div style="height: 100px"></div>
+        <div>
+          <h2>Hello, <%=name.charAt(0).toUpperCase() + name.slice(1)%></h2>
+          <h4 class="text-muted mt-3 mb-3">What would you like to see?</h4>
+          <div class="col mb-3">
+            <div class="card border-dark">
+              <div class="card-body">
+                <h5 class="card-title">Movie List</h5>
+                <p class="card-text">
+                  Our Movie list features OMDb API's free movie database to
+                  search for any movie you can think of. Make sure your searches
+                  include the complete title and any punctuation. Without
+                  accurate movie titles we cannot gaurantee accurate results.
+                </p>
+                <a href="/movie" class="btn btn-primary mt-2"
+                  >Search For A Movie</a
+                >
+                <a href="https://www.omdbapi.com/" class="btn btn-primary mt-2"
+                  >OMDb API</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col mb-3">
+            <div class="card border-dark">
+              <div class="card-body">
+                <h5 class="card-title">Videogame List</h5>
+                <p class="card-text">
+                  Our videogame list utilizes RAWG Video Game Database API to
+                  search for over 500,000 games. Please be sure to search for
+                  the whole title and all punctuation in the game name to get
+                  the most accurate results.
+                </p>
+                <a href="/videogame" class="btn btn-primary mt-2"
+                  >Search For A Videogame</a
+                >
+                <a href="https://rawg.io/apidocs" class="btn btn-primary mt-2"
+                  >RAWG.io API</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-3">
+          <div class="card border-dark">
+            <div class="card-body">
+              <h5 class="card-title">Book list</h5>
+              <p class="card-text">
+                Our book list uses Google Books API. Don't forget to include the
+                books full title with all punctuation to get the best matching
+                book for your seach.
+              </p>
+              <a href="/book" class="btn btn-primary mt-2">Search For A Book</a>
+              <a
+                href="https://developers.google.com/books/docs/overview"
+                class="btn btn-primary mt-2"
+                >Google Books API</a
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <%} else{}%>
   </body>
 </html>

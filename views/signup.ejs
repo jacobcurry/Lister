@@ -18,10 +18,45 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Movie List Home</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      $(window).on("load", () => {
+        $("#myModal").modal("show");
+      });
+    </script>
+    <title>Sign Up</title>
   </head>
   <body>
-    <%- include('./partials/header.ejs') %>
+    <%- include('./partials/header.ejs') %> <%if(userExists) {%>
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm container">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Uh Oh!</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <%if(userExists){%>
+          <div class="modal-body"><%=userExists%></div>
+          <%}%>
+        </div>
+      </div>
+    </div>
+    <%}%>
     <div
       class="d-flex align-items-center justify-content-center"
       style="width: 100vw; height: 100vh"

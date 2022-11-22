@@ -5,9 +5,12 @@ const bcrypt = require("bcrypt");
 const User = require("../models/users.js");
 
 router.get("/", (req, res) => {
+  const userExists = req.session.userExists;
+  delete req.session.userExists;
   if (!req.session.isAuth) {
     return res.render("signup.ejs", {
       path: req.baseUrl,
+      userExists: userExists,
     });
   }
   res.redirect("/");
@@ -19,9 +22,11 @@ router.post("/", async (req, res) => {
   let user = await User.findOne({ email });
 
   if (user) {
-    console.log(user);
+    req.session.userExists = "A user with that email address already exists";
     return res.redirect("/signup");
   }
+
+  req.session.userExists = null;
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
