@@ -58,42 +58,52 @@
     </div>
     <%}%>
     <div
-      class="d-flex align-items-center justify-content-center"
+      class="container-fluid d-flex align-items-center justify-content-center"
       style="width: 100vw; height: 100vh"
     >
-      <form action="/signup" method="post">
-        <h1>Sign Up</h1>
-        <div class="mb-3">
-          <label for="nameInput" class="form-label">Name</label>
-          <input
-            type="text"
-            name="name"
-            class="form-control"
-            id="nameInput"
-            aria-describedby="nameInput"
-          />
+      <div>
+        <form action="/signup" method="post">
+          <h1 class="m-3">Sign Up</h1>
+          <div class="m-3">
+            <label for="nameInput" class="form-label">Name</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              id="nameInput"
+              aria-describedby="nameInput"
+            />
+          </div>
+          <div class="m-3">
+            <label for="emailInput" class="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="emailInput"
+              aria-describedby="emailInput"
+            />
+          </div>
+          <div class="m-3">
+            <label for="passwordInput" class="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="passwordInput"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary m-3">Submit</button>
+        </form>
+      </div>
+      <div class="d-flex flex-column align-items-center m-3">
+        <div id="createAccount" class="form-text text-center fs-5">
+          Already Have an Account?
         </div>
-        <div class="mb-3">
-          <label for="emailInput" class="form-label">Email</label>
-          <input
-            type="email"
-            name="email"
-            class="form-control"
-            id="emailInput"
-            aria-describedby="emailInput"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="passwordInput" class="form-label">Password</label>
-          <input
-            type="password"
-            name="password"
-            class="form-control"
-            id="passwordInput"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary mt-2">Submit</button>
-      </form>
+        <a href="/login"
+          ><button class="btn btn-primary mt-3">Log In</button></a
+        >
+      </div>
     </div>
   </body>
 </html>
