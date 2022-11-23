@@ -52,12 +52,13 @@
           </h6>
           <%if(data.authors) {%>
           <h6 class="card-subtitle mb-3">Author: <%=data.authors%></h6>
-          <%}%>
+          <%}%> <%if (data.imageLinks){%>
           <img
             class="mb-3"
             style="width: 50%"
             src="<%=data.imageLinks.thumbnail%>"
           />
+          <%}%>
           <div class="d-flex">
             <form>
               <input

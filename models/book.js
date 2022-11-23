@@ -11,7 +11,7 @@ const bookSchema = new mongoose.Schema(
           pageCount: { type: Number, required: true },
           categories: [{ type: String, required: true }],
           imageLinks: {
-            thumbnail: { type: String, required: true },
+            thumbnail: { type: String },
           },
         },
       },
