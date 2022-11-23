@@ -22,12 +22,18 @@ const isAuth = (req, res, next) => {
 
 //home
 router.get("/", (req, res) => {
+  const bookError = req.session.bookError;
+  const book = req.session.book;
+  delete req.session.bookError;
+  delete req.session.book;
   res.render("bookhome.ejs", {
     data: "",
     name: req.session.name,
     auth: req.session.isAuth,
     email: req.session.email,
     path: req.baseUrl,
+    bookErr: bookError,
+    book: book,
   });
 });
 
@@ -43,10 +49,12 @@ router.get("/show", async (req, res, next) => {
   const book = req.query.book;
   const response = await axiosInstance.get(book);
   newBook = response.data;
-  newBookList = response.data.items[0].volumeInfo;
   if (newBook.totalItems === 0) {
-    return res.redirect("/");
+    req.session.bookError = true;
+    req.session.book = book;
+    return res.redirect("/book");
   }
+  newBookList = response.data.items[0].volumeInfo;
   res.render("bookshow.ejs", {
     data: newBookList,
     name: req.session.name,

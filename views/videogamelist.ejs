@@ -18,9 +18,21 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Videogame List Home</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(window).on("load", () => {
+        $(".loader").hide();
+      });
+    </script>
+    <title>Videogame Lister</title>
   </head>
   <body>
+    <div class="loader"></div>
     <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else {%>
     <%- include('./partials/header.ejs') %> <%}%>
     <div class="table-responsive mt-3">

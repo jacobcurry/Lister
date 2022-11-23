@@ -28,9 +28,16 @@
         $("#myModal").modal("show");
       });
     </script>
+
+    <script type="text/javascript">
+      $(window).on("load", () => {
+        $(".loader").hide();
+      });
+    </script>
     <title>Log In</title>
   </head>
   <body>
+    <div class="loader"></div>
     <%- include('./partials/header.ejs') %> <%if(noUser || wrongPassword){%>
     <div
       class="modal fade"
@@ -63,7 +70,7 @@
       class="container-fluid d-flex align-items-center justify-content-center"
       style="width: 100vw; height: 100vh"
     >
-      <div>
+      <div class="card border-dark p-3">
         <form action="/login" method="post">
           <h1 class="m-3">Log In</h1>
           <div class="m-3">
@@ -95,7 +102,9 @@
           </button>
         </form>
       </div>
-      <div class="d-flex flex-column align-items-center m-3">
+      <div
+        class="card border-dark d-flex flex-column align-items-center m-3 p-3"
+      >
         <div id="createAccount" class="form-text text-center fs-5">
           Don't Have an account?
         </div>

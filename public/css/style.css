@@ -28,3 +28,14 @@ html {
 .dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
 }
+
+.loader {
+  background: rgba(0, 0, 0, 0.2) url("../img/loader.gif") no-repeat center
+    center;
+  background-size: 12%;
+  backdrop-filter: blur(6px);
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  position: fixed;
+}

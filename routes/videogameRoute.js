@@ -22,12 +22,18 @@ const isAuth = (req, res, next) => {
 
 //home
 router.get("/", (req, res) => {
+  const videogameError = req.session.videogameError;
+  const videogame = req.session.game;
+  delete req.session.videogameError;
+  delete req.session.game;
   res.render("videogamehome.ejs", {
     data: "",
     name: req.session.name,
     auth: req.session.isAuth,
     email: req.session.email,
     path: req.baseUrl,
+    videogameErr: videogameError,
+    videogame: videogame,
   });
 });
 
@@ -45,6 +51,8 @@ router.get("/show", async (req, res, next) => {
   newVideogame = response.data.results[0];
   newVideogameList = response.data;
   if (newVideogameList.count === 0) {
+    req.session.game = videogame;
+    req.session.videogameError = true;
     return res.redirect("/videogame");
   }
   res.render("videogameshow.ejs", {

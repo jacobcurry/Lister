@@ -17,10 +17,23 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(window).on("load", () => {
+        $(".loader").hide();
+      });
+    </script>
+
     <title>Movie List Home</title>
   </head>
   <body>
+    <div class="loader"></div>
     <div class="container-fluid">
       <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else
       {%> <%- include('./partials/header.ejs') %> <%}%>
@@ -35,7 +48,7 @@
             id="scroll"
             class="btn btn-primary mb-3"
             type="button"
-            value="Lets Get Started"
+            value="Let's Get Started"
             onclick="document.getElementById('middle-div').scrollIntoView({behavior:'smooth'});"
           />
           <%}else{%>

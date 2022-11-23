@@ -18,9 +18,21 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Videogame List Home</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(window).on("load", () => {
+        $(".loader").hide();
+      });
+    </script>
+    <title>Videogame Lister</title>
   </head>
   <body>
+    <div class="loader"></div>
     <div
       class="container-xxl d-flex flex-column justify-content-center align-items-centern show-movie-div"
     >
@@ -63,7 +75,7 @@
                 class="btn btn-primary me-2"
                 type="button"
                 value="Back"
-                onclick="history.back()"
+                onclick="window.location=document.referrer"
               />
             </form>
             <%if(auth){%>

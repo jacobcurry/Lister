@@ -28,9 +28,17 @@
         $("#myModal").modal("show");
       });
     </script>
+
+    <script type="text/javascript">
+      $(window).on("load", () => {
+        $(".loader").hide();
+      });
+    </script>
+
     <title>Sign Up</title>
   </head>
   <body>
+    <div class="loader"></div>
     <%- include('./partials/header.ejs') %> <%if(userExists) {%>
     <div
       class="modal fade"
@@ -61,9 +69,9 @@
       class="container-fluid d-flex align-items-center justify-content-center"
       style="width: 100vw; height: 100vh"
     >
-      <div>
+      <div class="card border-dark p-3">
         <form action="/signup" method="post">
-          <h1 class="m-3">Sign Up</h1>
+          <h1 class="m-3 mt-0">Sign Up</h1>
           <div class="m-3">
             <label for="nameInput" class="form-label">Name</label>
             <input
@@ -96,7 +104,9 @@
           <button type="submit" class="btn btn-primary m-3">Submit</button>
         </form>
       </div>
-      <div class="d-flex flex-column align-items-center m-3">
+      <div
+        class="card border-dark p-3 d-flex flex-column align-items-center m-3"
+      >
         <div id="createAccount" class="form-text text-center fs-5">
           Already Have an Account?
         </div>

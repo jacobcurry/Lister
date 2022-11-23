@@ -20,12 +20,18 @@ const isAuth = (req, res, next) => {
 
 //home
 router.get("/", (req, res) => {
+  const movieError = req.session.movieError;
+  const movie = req.session.movie;
+  delete req.session.movieError;
+  delete req.session.movie;
   res.render("moviehome.ejs", {
     data: "",
     name: req.session.name,
     auth: req.session.isAuth,
     email: req.session.email,
     path: req.baseUrl,
+    movieErr: movieError,
+    movie: movie,
   });
 });
 
@@ -42,6 +48,8 @@ router.get("/show", async (req, res, next) => {
   const response = await axiosInstance.get(movie);
   newMovie = response.data;
   if (newMovie.Error) {
+    req.session.movie = movie;
+    req.session.movieError = true;
     return res.redirect("/movie");
   }
   res.render("movieshow.ejs", {
