@@ -68,48 +68,50 @@
     <%}%>
     <div
       class="container-fluid d-flex align-items-center justify-content-center"
-      style="width: 100vw; height: 100vh"
+      style="height: 100vh"
     >
-      <div class="card border-dark p-3">
-        <form action="/login" method="post">
-          <h1 class="m-3">Log In</h1>
-          <div class="m-3">
-            <label for="emailInput" class="form-label">Email</label>
-            <input
-              type="email"
-              name="email"
-              class="form-control"
-              id="emailInput"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div class="m-3">
-            <label for="passwordInput" class="form-label">Password</label>
-            <input
-              type="password"
-              name="password"
-              class="form-control"
-              id="passwordInput"
-            />
-          </div>
-          <button
-            type="submit"
-            class="btn btn-primary m-3"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-      <div
-        class="card border-dark d-flex flex-column align-items-center m-3 p-3"
-      >
+      <div class="card mt-5">
+        <div class="p-3">
+          <form class="text-center" action="/login" method="post">
+            <h1 class="m-3 mt-0 text-center">Log In</h1>
+            <div class="m-3">
+              <h6 for="emailInput" class="form-label text-start">Email</h6>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="emailInput"
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+            <div class="m-3">
+              <h6 for="passwordInput" class="form-label text-start">
+                Password
+              </h6>
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                id="passwordInput"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="text-center"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
         <div id="createAccount" class="form-text text-center fs-5">
           Don't Have an account?
         </div>
-        <a href="/signup"
-          ><button class="btn btn-primary mt-3">Sign Up</button></a
+        <a class="text-center" href="/signup"
+          ><button class="m-3">Sign Up</button></a
         >
       </div>
     </div>

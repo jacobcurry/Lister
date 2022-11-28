@@ -67,52 +67,57 @@
     <%}%>
     <div
       class="container-fluid d-flex align-items-center justify-content-center"
-      style="width: 100vw; height: 100vh"
+      style="height: 100vh"
     >
-      <div class="card border-dark p-3">
-        <form action="/signup" method="post">
-          <h1 class="m-3 mt-0">Sign Up</h1>
-          <div class="m-3">
-            <label for="nameInput" class="form-label">Name</label>
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              id="nameInput"
-              aria-describedby="nameInput"
-            />
-          </div>
-          <div class="m-3">
-            <label for="emailInput" class="form-label">Email</label>
-            <input
-              type="email"
-              name="email"
-              class="form-control"
-              id="emailInput"
-              aria-describedby="emailInput"
-            />
-          </div>
-          <div class="m-3">
-            <label for="passwordInput" class="form-label">Password</label>
-            <input
-              type="password"
-              name="password"
-              class="form-control"
-              id="passwordInput"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary m-3">Submit</button>
-        </form>
-      </div>
-      <div
-        class="card border-dark p-3 d-flex flex-column align-items-center m-3"
-      >
-        <div id="createAccount" class="form-text text-center fs-5">
-          Already Have an Account?
+      <div class="card mt-5 text-center">
+        <div class="p-3 text-center">
+          <form class="text-center" action="/signup" method="post">
+            <h1 class="text-center">Sign Up</h1>
+            <div class="m-3">
+              <h6 for="nameInput" class="form-label text-start">Name</h6>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="nameInput"
+                aria-describedby="nameInput"
+                required
+              />
+            </div>
+            <div class="m-3">
+              <h6 for="emailInput" class="form-label text-start">Email</h6>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="emailInput"
+                aria-describedby="emailInput"
+                required
+              />
+            </div>
+            <div class="m-3">
+              <h6 for="passwordInput" class="form-label text-start">
+                Password
+              </h6>
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                id="passwordInput"
+                required
+              />
+            </div>
+            <button type="submit" class="">Submit</button>
+          </form>
         </div>
-        <a href="/login"
-          ><button class="btn btn-primary mt-3">Log In</button></a
-        >
+        <div class="">
+          <div id="createAccount" class="form-text text-center fs-5">
+            Already Have an Account?
+          </div>
+          <a class="text-center" href="/login"
+            ><button class="m-3 text-center">Log In</button></a
+          >
+        </div>
       </div>
     </div>
   </body>

@@ -57,15 +57,15 @@
           <div class="d-flex">
             <form>
               <input
-                class="btn btn-primary me-2"
+                class="list-show me-2"
                 type="button"
                 value="Back"
                 onclick="window.location=document.referrer"
               />
             </form>
             <%if(auth){%>
-            <a href="/movie/addmovie" class="btn btn-success add-movie"
-              >Add to list</a
+            <a href="/movie/addmovie"
+              ><button class="btn-normal">Add to list</button></a
             >
             <%}%>
           </div>
@@ -73,5 +73,6 @@
       </div>
     </div>
     <div class="hidden"></div>
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>

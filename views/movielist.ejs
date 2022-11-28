@@ -35,8 +35,10 @@
     <div class="loader"></div>
     <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else {%>
     <%- include('./partials/header.ejs') %> <%}%>
-    <div class="table-responsive mt-3">
-      <table class="table table-hover mt-5 text-center align-middle">
+    <div class="table-responsive mt-4" style="width: 100vw; height: 100vh">
+      <table
+        class="table table-hover mt-5 text-center align-middle table-light"
+      >
         <thead class="">
           <tr>
             <th scope="col">Title</th>
@@ -60,7 +62,7 @@
                   type="text"
                   value="<%=data[i].Title%>"
                 />
-                <input class="btn btn-primary" type="submit" value="See More" />
+                <input class="list-show" type="submit" value="See More" />
               </form>
             </td>
             <td>
@@ -74,20 +76,17 @@
                   type="text"
                   value="<%=data[i].Title%>"
                 />
-                <input class="btn btn-danger" type="submit" value="Delete" />
+                <input class="list-delete" type="submit" value="Delete" />
               </form>
             </td>
           </tr>
           <%}%>
         </tbody>
       </table>
-      <form action="/movie">
-        <input
-          class="btn btn-primary ms-5"
-          type="submit"
-          value="Search For Another Movie"
-        />
-      </form>
+      <a class="ms-3" href="/movie"
+        ><button>Search For Another Movie</button></a
+      >
     </div>
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>

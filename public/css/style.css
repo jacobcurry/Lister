@@ -3,6 +3,86 @@ html {
   overflow-y: scroll;
 }
 
+body {
+  background-color: #c5f6ff;
+}
+
+.navbar {
+  background-color: #c5f6ff;
+}
+
+button,
+.btn-normal {
+  background-color: #ff7b69;
+  font-weight: 500;
+  color: white;
+  height: 2.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: none;
+  border-radius: 2.5em;
+}
+
+.list-show {
+  background-color: #307fca;
+  font-weight: 500;
+  color: white;
+  height: 2.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: none;
+  border-radius: 2.5em;
+}
+
+.list-delete {
+  background-color: #dc3545;
+  font-weight: 500;
+  color: white;
+  height: 2.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: none;
+  border-radius: 2.5em;
+}
+
+#scroll {
+  background-color: #ff7b69;
+  font-weight: 500;
+  color: white;
+  height: 2.5em;
+  border: none;
+  border-radius: 2.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+button:hover {
+  background-color: #de7b69;
+}
+
+.ul-dropdown {
+  background-color: white;
+  color: black;
+}
+.ul-dropdown > li > a {
+  background-color: white;
+  color: black;
+}
+
+.log-out-input {
+  background-color: white;
+  color: black;
+}
+
+.ul-sub-dropdown {
+  background-color: white;
+  color: black;
+}
+.ul-sub-dropdown > li > a {
+  background-color: white;
+  color: black;
+}
+
 .show-movie-div {
   margin: 10px auto;
   max-height: 80%;

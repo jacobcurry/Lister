@@ -35,8 +35,10 @@
     <div class="loader"></div>
     <%if(auth) {%> <%- include('./partials/loggedinheader.ejs') %> <%} else {%>
     <%- include('./partials/header.ejs') %> <%}%>
-    <div class="table-responsive mt-3">
-      <table class="table table-hover mt-5 text-center align-middle">
+    <div class="mt-4 table-responsive" style="width: 100vw; height: 100vh">
+      <table
+        class="table table-light table-hover mt-5 text-center align-middle"
+      >
         <thead class="">
           <tr>
             <th scope="col">Name</th>
@@ -60,7 +62,7 @@
                   type="text"
                   value="<%=data[i].results[0].name%>"
                 />
-                <input class="btn btn-primary" type="submit" value="See More" />
+                <input class="list-show" type="submit" value="See More" />
               </form>
             </td>
             <td>
@@ -74,7 +76,7 @@
                   type="text"
                   value="<%=data[i].name%>"
                 />
-                <input class="btn btn-danger" type="submit" value="Delete" />
+                <input class="list-delete" type="submit" value="Delete" />
               </form>
             </td>
           </tr>
@@ -83,11 +85,12 @@
       </table>
       <form action="/videogame">
         <input
-          class="btn btn-primary ms-5"
+          class="btn-normal ms-5"
           type="submit"
           value="Search For Another Game"
         />
       </form>
     </div>
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>
