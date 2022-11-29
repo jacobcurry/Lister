@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 html {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -5,6 +6,7 @@ html {
 
 body {
   background-color: #c5f6ff;
+  font-family: "Montserrat", sans-serif;
 }
 
 .navbar {
@@ -118,4 +120,12 @@ button:hover {
   height: 100vh;
   z-index: 100;
   position: fixed;
+}
+
+.login-signup-card {
+  box-shadow: 3px 3px 5px #ff7b69;
+}
+
+.dropdown-menu-shadow {
+  border: 2px solid rgba(0, 0, 0);
 }
